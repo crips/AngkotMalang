@@ -1,0 +1,14 @@
+﻿[
+    {
+        "id": "1",
+        "nama": "Angkutan Kota",
+        "deskripsi": "",
+        "foto": "/Assets/gambar/angkutan kota.png"
+    },
+    {
+        "id": "2",
+        "nama": "Bus",
+        "deskripsi": "",
+        "foto": "/Assets/gambar/bus-hi.png"
+    }
+]

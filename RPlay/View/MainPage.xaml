@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="RPlay.View.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RPlay.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="None">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="False"/>
+                        <Setter Target="SearchIcon.Visibility" Value="Visible"/>
+                        <Setter Target="SearchBox.Visibility" Value="Collapsed"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="Middle">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="680"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.IsPaneOpen" Value="True"/>
+                        <Setter Target="SearchIcon.Visibility" Value="Collapsed"/>
+                        <Setter Target="SearchBox.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        <SplitView x:Name="MySplitView" IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="275" DisplayMode="CompactInline" PaneBackground="#FFC7E0AD">
+            <SplitView.Pane>
+                <StackPanel>
+                    <StackPanel>
+                        <Button x:Name="HamburgerButton" Click="HamburgerButton_Click" Height="50" Width="50" Background="Transparent" FontFamily="Segoe MDL2 Assets" Content="" Foreground="Black"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Height="50">
+                        <Button x:Name="SearchIcon" Click="SearchIcon_Click" Height="50" Width="50" FontFamily="Segoe MDL2 Assets" Background="Transparent" Content="" Foreground="Black"/>
+                        <AutoSuggestBox x:Name="SearchBox" Width="250" PlaceholderText="Search" QueryIcon="Find" VerticalAlignment="Center" Margin="15,0,15,0"/>
+                    </StackPanel>
+
+                    <ListView SelectionChanged="ListView_SelectionChanged">
+                        <ListViewItem x:Name="beranda">
+                            <StackPanel Orientation="Horizontal" Height="50">
+                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="20" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="keretaapi">
+                            <StackPanel Orientation="Horizontal" Height="50">
+                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="20" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0"/>
+                                <TextBlock Text="Stasiun Kereta Api" FontSize="18" Foreground="Black" VerticalAlignment="Center" Margin="15,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                        <ListViewItem x:Name="terminal">
+                            <StackPanel Orientation="Horizontal" Height="50">
+                                <TextBlock Text="" FontFamily="Segoe MDL2 Assets" FontSize="20" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0"/>
+                                <TextBlock Text="Terminal Angkutan Umum" FontSize="18" Foreground="Black" VerticalAlignment="Center" Margin="15,0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+                </StackPanel>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Frame x:Name="MainFrame">
+                </Frame>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>

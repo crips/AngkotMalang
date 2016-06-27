@@ -1,0 +1,57 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RPlay.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Bing="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="RPlay.View.deskripsi"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="{Binding Nama}" Style="{ThemeResource TitleTextBlockStyle}" TextWrapping="WrapWholeWords" Margin="24,0"/>
+        </StackPanel>
+
+        <Pivot x:Name="MyPivot" Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <PivotItem Header="Tentang Stasiun" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <ScrollViewer>
+                    <StackPanel ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                        <Grid Margin="0,-24,24,24">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <!--<ColumnDefinition Width="*"/>-->
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel x:Name="Gambar" Margin="24,24,0,0">
+                                <Image Source="{Binding Foto}" HorizontalAlignment="Left"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="Deskrip" Margin="24,24,0,0">
+                                <Rectangle Height="32" Fill="#C33D27"/>
+                                <TextBlock Text="{Binding Deskripsi}" FontSize="16" FontWeight="Light" TextWrapping="WrapWholeWords"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </PivotItem>
+            <PivotItem Header="Lokasi Stasiun" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <StackPanel ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <Bing:MapControl x:Name="MyMap" MapServiceToken="1Qx4ahRBMrzdb2dJiP2I~kv5CsjPoM8PMq-5V5bROfw~AoaqAomy2X5Douq7vAau6fkEIE1EZGu2aFBB8nHAJ78cXzMIkWIJ-9GkLA1X1M7B" Loaded="map_loaded">
+                    </Bing:MapControl>
+                </StackPanel>
+            </PivotItem>
+        </Pivot>
+
+    </Grid>
+</Page>
